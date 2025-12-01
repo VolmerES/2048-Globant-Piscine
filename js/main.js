@@ -2,31 +2,42 @@ let gameOver = false;
 let gameWon = false;
 
 function initGame() {
-  grid = [
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0]
-  ];
+	grid = [
+		[0, 0, 0, 0],
+		[0, 0, 0, 0],
+		[0, 0, 0, 0],
+		[0, 0, 0, 0]
+	];
 
-  score = 0;
-  gameOver = false;
-  gameWon = false;
-  initTileGrid();
-  updateScore();
-  addRandomTile();
-  addRandomTile();
-  renderTiles();
+	score = 0;
+	gameOver = false;
+	gameWon = false;
+	initTileGrid();
+	updateScore();
+	addRandomTile();
+	addRandomTile();
+	renderTiles();
 }
 
 const restartButton = document.getElementById("restart-btn");
 if (restartButton) {
-  restartButton.addEventListener("click", function () {
-    initGame();
-  });
+	restartButton.addEventListener("click", function () {
+		initGame();
+	});
 }
 
+// Re-renderizar cuando cambia el tamaño de la ventana (para responsive)
+let resizeTimeout;
+window.addEventListener('resize', function () {
+	clearTimeout(resizeTimeout);
+	resizeTimeout = setTimeout(function () {
+		renderTiles();
+	}, 100);
+});
 
-window.onload = function() {
-  initGame();
+window.onload = function () {
+	// Pequeño delay para asegurar que las variables CSS estén cargadas
+	setTimeout(function () {
+		initGame();
+	}, 50);
 };
