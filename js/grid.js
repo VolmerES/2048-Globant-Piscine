@@ -40,34 +40,3 @@ function setColumn(grid, colIndex, column) {
     grid[row][colIndex] = column[row];
   }
 }
-
-function updateBoard() {
-  const boardContainer = document.getElementById("grid");
-
-  // Si es la primera vez, crea los tiles y les pone id
-  if (boardContainer.children.length === 0) {
-    for (let i = 0; i < 4; i++) {
-      for (let j = 0; j < 4; j++) {
-        const tile = document.createElement("div");
-        tile.classList.add("tile");
-        tile.id = `tile-${i}-${j}`;
-        boardContainer.appendChild(tile);
-      }
-    }
-  }
-
-  // Solo actualiza clases y contenido
-  for (let i = 0; i < 4; i++) {
-    for (let j = 0; j < 4; j++) {
-      const value = grid[i][j];
-      const tile = document.getElementById(`tile-${i}-${j}`);
-      tile.className = "tile";
-      tile.classList.add("tile-" + value);
-      tile.textContent = value !== 0 ? value : "";
-    }
-  }
-}
-
-function updateScore() {
-  document.getElementById("score").textContent = score;
-}
