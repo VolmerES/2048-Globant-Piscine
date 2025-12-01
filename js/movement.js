@@ -8,16 +8,16 @@ document.addEventListener("keydown", function (event) {
   if (gameOver || gameWon) return;
   let moved = false;
 
-  if (event.key === "ArrowLeft") {
+  if (event.key === "ArrowLeft" || event.key === "a") {
     console.log("Movimiento: izquierda");
     moved = moveLeft();
-  } else if (event.key === "ArrowRight") {
+  } else if (event.key === "ArrowRight" || event.key === "d") {
     console.log("Movimiento: derecha");
     moved = moveRight();
-  } else if (event.key === "ArrowUp") {
+  } else if (event.key === "ArrowUp" || event.key === "w") {
     console.log("Movimiento: arriba");
     moved = moveUp();
-  } else if (event.key === "ArrowDown") {
+  } else if (event.key === "ArrowDown" || event.key === "s") {
     console.log("Movimiento: abajo");
     moved = moveDown();
   }
