@@ -6,7 +6,7 @@
 /*   By: volmer <volmer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 15:57:28 by volmer            #+#    #+#             */
-/*   Updated: 2025/12/01 16:09:06 by volmer           ###   ########.fr       */
+/*   Updated: 2025/12/01 16:17:08 by volmer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ document.addEventListener("keydown", function (event) {
   if (moved) {
     addRandomTile();
     updateBoard();
+	checkGameState();
   }
 });
 
