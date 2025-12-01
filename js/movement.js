@@ -1,14 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   movement.js                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: volmer <volmer@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/01 15:57:28 by volmer            #+#    #+#             */
-/*   Updated: 2025/12/01 17:30:55 by volmer           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+
 
 /* ------------------------------------------ */
 /*               MOVIMIENTO                   */
@@ -51,10 +41,18 @@ function moveUp() {
 
   for (let col = 0; col < 4; col++) {
     const oldColumn = getColumn(grid, col);
+    const oldTileColumn = getTileColumn(col);
+    
     let newColumn = compressRow(oldColumn);
-    newColumn = mergeRow(newColumn);
+    let newTileColumn = compressTileRow(oldTileColumn);
+    
+    newColumn = mergeRow(newColumn, newTileColumn);
     newColumn = compressRow(newColumn);
+    newTileColumn = compressTileRow(newTileColumn);
+    
     setColumn(grid, col, newColumn);
+    setTileColumn(col, newTileColumn);
+    
     for (let row = 0; row < 4; row++) {
       if (oldColumn[row] !== newColumn[row]) {
         moved = true;
@@ -74,12 +72,23 @@ function moveDown() {
 
   for (let col = 0; col < 4; col++) {
     const oldColumn = getColumn(grid, col);
+    const oldTileColumn = getTileColumn(col);
+    
     let newColumn = reverseRow(oldColumn);
+    let newTileColumn = reverseTileRow(oldTileColumn);
+    
     newColumn = compressRow(newColumn);
-    newColumn = mergeRow(newColumn);
+    newTileColumn = compressTileRow(newTileColumn);
+    
+    newColumn = mergeRow(newColumn, newTileColumn);
     newColumn = compressRow(newColumn);
+    newTileColumn = compressTileRow(newTileColumn);
+    
     newColumn = reverseRow(newColumn);
+    newTileColumn = reverseTileRow(newTileColumn);
+    
     setColumn(grid, col, newColumn);
+    setTileColumn(col, newTileColumn);
 
     for (let row = 0; row < 4; row++) {
       if (oldColumn[row] !== newColumn[row]) {
@@ -101,12 +110,24 @@ function moveRight() {
 
   for (let row = 0; row < 4; row++) {
     const oldRow = [...grid[row]];
+    const oldTileRow = [...tileGrid[row]];
+    
     let newRow = reverseRow(grid[row]);
+    let newTileRow = reverseTileRow(tileGrid[row]);
+    
     newRow = compressRow(newRow);
-    newRow = mergeRow(newRow);
+    newTileRow = compressTileRow(newTileRow);
+    
+    newRow = mergeRow(newRow, newTileRow);
     newRow = compressRow(newRow);
+    newTileRow = compressTileRow(newTileRow);
+    
     newRow = reverseRow(newRow);
+    newTileRow = reverseTileRow(newTileRow);
+    
     grid[row] = newRow;
+    tileGrid[row] = newTileRow;
+    
     for (let col = 0; col < 4; col++) {
       if (oldRow[col] !== newRow[col]) {
         moved = true;
@@ -127,10 +148,18 @@ function moveLeft() {
 
   for (let row = 0; row < 4; row++) {
     const oldRow = [...grid[row]];
+    const oldTileRow = [...tileGrid[row]];
+    
     let newRow = compressRow(grid[row]);
-    newRow = mergeRow(newRow);
+    let newTileRow = compressTileRow(tileGrid[row]);
+    
+    newRow = mergeRow(newRow, newTileRow);
     newRow = compressRow(newRow);
+    newTileRow = compressTileRow(newTileRow);
+    
     grid[row] = newRow;
+    tileGrid[row] = newTileRow;
+    
     for (let col = 0; col < 4; col++) {
       if (oldRow[col] !== newRow[col]) {
         moved = true;
@@ -149,6 +178,10 @@ function reverseRow(row) {
   return [...row].reverse();
 }
 
+function reverseTileRow(row) {
+  return [...row].reverse();
+}
+
 function compressRow(row) {
   const filtered = row.filter((value) => value !== 0);
   while (filtered.length < 4) {
@@ -157,11 +190,21 @@ function compressRow(row) {
   return filtered;
 }
 
-function mergeRow(row) {
+function compressTileRow(row) {
+  const filtered = row.filter((value) => value !== null);
+  while (filtered.length < 4) {
+    filtered.push(null);
+  }
+  return filtered;
+}
+
+function mergeRow(row, tileRow) {
   for (let i = 0; i < 3; i++) {
     if (row[i] !== 0 && row[i] === row[i + 1]) {
       row[i] = row[i] * 2;
       row[i + 1] = 0;
+      // Mantener el ID de la primera ficha, eliminar el de la segunda
+      tileRow[i + 1] = null;
       score += row[i];
     }
   }

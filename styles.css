@@ -112,57 +112,30 @@
 
 @keyframes pop {
   0% {
-    transform: translate(var(--tx), var(--ty)) scale(0);
     opacity: 0;
-  }
-  50% {
-    transform: translate(var(--tx), var(--ty)) scale(1.1);
-    opacity: 1;
+    filter: blur(2px);
   }
   100% {
-    transform: translate(var(--tx), var(--ty)) scale(1);
     opacity: 1;
-  }
-}
-
-/* Usar una clase separada para el efecto de escala */
-.tile.tile-new::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  animation: popScale 0.2s ease-out;
-  pointer-events: none;
-}
-
-@keyframes popScale {
-  0% {
-    transform: scale(0);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
+    filter: blur(0);
   }
 }
 
 /* Animación de fusión */
 .tile.tile-merged {
-  animation: merge 0.2s ease-in-out;
+  animation: merge 0.6s ease-in-out;
+  z-index: 100 !important;
 }
 
 @keyframes merge {
   0% {
-    transform: scale(1);
+    transform: translate(var(--tx), var(--ty)) scale(1);
   }
   50% {
-    transform: scale(1.1);
+    transform: translate(var(--tx), var(--ty)) scale(1.2);
   }
   100% {
-    transform: scale(1);
+    transform: translate(var(--tx), var(--ty)) scale(1);
   }
 }
 

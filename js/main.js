@@ -12,6 +12,7 @@ function initGame() {
   score = 0;
   gameOver = false;
   gameWon = false;
+  initTileGrid();
   updateScore();
   addRandomTile();
   addRandomTile();
