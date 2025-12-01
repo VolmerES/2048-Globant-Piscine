@@ -6,7 +6,7 @@
 /*   By: volmer <volmer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 15:57:28 by volmer            #+#    #+#             */
-/*   Updated: 2025/12/01 16:26:39 by volmer           ###   ########.fr       */
+/*   Updated: 2025/12/01 16:37:22 by volmer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /* ------------------------------------------ */
 
 document.addEventListener("keydown", function (event) {
+  if (gameOver || gameWon) return;
   let moved = false;
 
   if (event.key === "ArrowLeft") {
@@ -32,10 +33,23 @@ document.addEventListener("keydown", function (event) {
   }
 
   if (moved) {
-    addRandomTile();
+    const newTile = addRandomTile();
     updateBoard();
-	checkGameState();
-	checkGameOver();
+    
+    // Animar el nuevo tile
+    if (newTile) {
+      const tile = document.getElementById(`tile-${newTile.x}-${newTile.y}`);
+      if (tile) {
+        tile.classList.add("tile-new");
+        tile.addEventListener("animationend", () => {
+          tile.classList.remove("tile-new");
+        }, { once: true });
+      }
+    }
+    
+    updateScore();
+    checkGameState();
+    checkGameOver();
   }
 });
 
@@ -59,7 +73,6 @@ function moveUp() {
       }
     }
   }
-  document.getElementById("score").textContent = score;
   return moved;
 }
 
@@ -68,9 +81,9 @@ function moveUp() {
 /* ------------------------------------------ */
 
 function moveDown() {
-  	let moved = false;
+  let moved = false;
 
-	for (let col = 0; col < 4; col++) {
+  for (let col = 0; col < 4; col++) {
     const oldColumn = getColumn(grid, col);
     let newColumn = reverseRow(oldColumn);
     newColumn = compressRow(newColumn);
@@ -87,7 +100,6 @@ function moveDown() {
     }
   }
 
-  document.getElementById("score").textContent = score;
   return moved;
 }
 
@@ -114,7 +126,6 @@ function moveRight() {
     }
   }
 
-  document.getElementById("score").textContent = score;
   return moved;
 }
 
@@ -123,7 +134,6 @@ function moveRight() {
 /* ------------------------------------------ */
 
 function moveLeft() {
-	
   let moved = false;
 
   for (let row = 0; row < 4; row++) {
@@ -139,7 +149,6 @@ function moveLeft() {
       }
     }
   }
-  document.getElementById("score").textContent = score;
   return moved;
 }
 
