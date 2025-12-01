@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2048 Game</title>
+
+  <!-- Tailwind CDN: framework CSS para maquetar rápido -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tu CSS propio, para los colores de las fichas y detalles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+  <div class="text-center">
+    <!-- Título del juego -->
+    <h1 class="text-4xl font-bold mb-6">2048</h1>
+
+    <!-- Marcador + botón de reinicio -->
+    <div class="flex items-center justify-between mb-4 max-w-xs mx-auto">
+      <div class="text-xl font-semibold">
+        Score: <span id="score">0</span>
+      </div>
+
+      <button id="restart-btn"
+        class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow">
+        Restart
+      </button>
+    </div>
+
+    <!-- Contenedor del tablero -->
+    <div id="grid"
+      class="grid grid-cols-4 gap-3 bg-gray-300 p-3 rounded-xl w-80 h-80">
+      <!-- Aquí meteremos 16 celdas desde JavaScript -->
+    </div>
+  </div>
+
+  <!-- Lógica del juego -->
+  <script src="script.js"></script>
+</body>
+</html>
