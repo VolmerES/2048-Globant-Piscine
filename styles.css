@@ -2,22 +2,32 @@
 /*  ESTILO BASE DE TODAS LAS FICHAS (tiles)                 */
 /* -------------------------------------------------------- */
 
-.tile {
-  display: flex;               /* Centra el número horizontalmente */
-  justify-content: center;
-  align-items: center;         /* Centra el número verticalmente   */
-
-  width: 100%;
-  height: 100%;
-
-  font-weight: bold;
-  font-size: 1.5rem;
-  border-radius: 8px;
-
-  transition: all 0.15s ease;  /* Animación suave al mover o cambiar */
+#grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  width: 400px;
+  height: 400px; /* añade altura fija */
+  background-color: #bbada0;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 0 auto; /* centra el grid */
 }
 
-
+.tile {
+  width: 100%;
+  height: 100%; /* asegura que ocupe toda la celda */
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: bold;
+  border-radius: 5px;
+  overflow: hidden;
+  aspect-ratio: 1;
+  min-height: 0;
+}
 /* -------------------------------------------------------- */
 /*  COLORES SEGÚN EL VALOR DE LA FICHA                      */
 /*  Estos colores imitan al 2048 original                    */

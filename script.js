@@ -20,7 +20,7 @@ function initGame() {
 	[0, 0, 0, 0]
 	];
 
-	score = 0;
+ score = 0;
 
 	document.getElementById("score").textContent = score;
 
@@ -56,23 +56,23 @@ function addRandomTile()
 //dibujar el tablero
 
 function updateBoard() {
-	const boardContainer = document.getElementById("grid");
-	boardContainer.innerHTML = "";
+    const boardContainer = document.getElementById("grid");
+    boardContainer.innerHTML = "";
 
-	for (let i = 0; i < 4; i++) {
-		for (let j = 0; j < 4; j++) {
-			const value = grid[i][j];
-			const tile = document.createElement("div");
-			tile.classList.add("tile");
-			tile.classList.add("tile-" + value);
-
-			if (value !== 0) {
-				tile.textContent = value;
-			}
-			
-			boardContainer.appendChild(tile);
-		}
-	}
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+            const value = grid[i][j];
+            const tile = document.createElement("div");
+            tile.classList.add("tile");
+            tile.classList.add("tile-" + value); // siempre añade la clase
+            
+            if (value !== 0) {
+                tile.textContent = value;
+            }
+            
+            boardContainer.appendChild(tile);
+        }
+    }
 }
 
 
