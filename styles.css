@@ -33,7 +33,7 @@
   font-weight: bold;
   border-radius: 5px;
   overflow: visible;
-  transition: transform 0.15s ease-out, opacity 0.15s ease-out;
+  transition: transform 0.25s ease-out, opacity 0.15s ease-out;
   --tx: 0px;
   --ty: 0px;
 }
