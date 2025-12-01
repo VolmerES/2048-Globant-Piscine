@@ -15,7 +15,7 @@ function initGame() {
   updateScore();
   addRandomTile();
   addRandomTile();
-  updateBoard();
+  renderTiles();
 }
 
 const restartButton = document.getElementById("restart-btn");

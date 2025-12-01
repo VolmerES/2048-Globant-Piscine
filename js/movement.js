@@ -6,7 +6,7 @@
 /*   By: volmer <volmer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 15:57:28 by volmer            #+#    #+#             */
-/*   Updated: 2025/12/01 16:37:22 by volmer           ###   ########.fr       */
+/*   Updated: 2025/12/01 17:30:55 by volmer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,9 @@ document.addEventListener("keydown", function (event) {
   }
 
   if (moved) {
-    const newTile = addRandomTile();
-    updateBoard();
-    
-    // Animar el nuevo tile
-    if (newTile) {
-      const tile = document.getElementById(`tile-${newTile.x}-${newTile.y}`);
-      if (tile) {
-        tile.classList.add("tile-new");
-        tile.addEventListener("animationend", () => {
-          tile.classList.remove("tile-new");
-        }, { once: true });
-      }
-    }
-    
+    const newTilePos = addRandomTile();
+    renderTiles(newTilePos);
+
     updateScore();
     checkGameState();
     checkGameOver();
