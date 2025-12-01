@@ -1,0 +1,147 @@
+/* -------------------------------------------------------- */
+/*  RESPONSIVE DESIGN PARA MÓVILES                         */
+/* -------------------------------------------------------- */
+
+#score-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 15px;
+}
+
+/* Para tablets y pantallas medianas */
+@media screen and (max-width: 768px) {
+	:root {
+		--tile-size: 75px;
+		--tile-gap: 8px;
+		--tile-spacing: 83px;
+		/* 75 + 8 */
+	}
+
+	h1 {
+		font-size: 3rem;
+	}
+
+	#grid {
+		width: 340px;
+		height: 340px;
+		padding: 8px;
+	}
+
+	.tile,
+	.tile-background {
+		width: 75px;
+		height: 75px;
+		font-size: 28px;
+	}
+
+	.tile-128,
+	.tile-256,
+	.tile-512 {
+		font-size: 1.1rem;
+	}
+
+	.tile-1024,
+	.tile-2048 {
+		font-size: 1rem;
+	}
+}
+
+/* Para móviles pequeños */
+@media screen and (max-width: 480px) {
+	:root {
+		--tile-size: 62px;
+		--tile-gap: 6px;
+		--tile-spacing: 68px;
+		/* 62 + 6 */
+	}
+
+	body {
+		padding: 10px;
+	}
+
+	h1 {
+		font-size: 2.5rem;
+		margin-bottom: 1rem;
+	}
+
+	#grid {
+		width: 280px;
+		height: 280px;
+		padding: 6px;
+	}
+
+	.tile,
+	.tile-background {
+		width: 62px;
+		height: 62px;
+		font-size: 24px;
+	}
+
+	.tile-128,
+	.tile-256,
+	.tile-512 {
+		font-size: 0.95rem;
+	}
+
+	.tile-1024,
+	.tile-2048 {
+		font-size: 0.85rem;
+	}
+
+	#score {
+		font-size: 1.2rem;
+	}
+
+	.text-xl {
+		font-size: 0.9rem;
+	}
+
+	#restart-btn {
+		padding: 8px 16px;
+		font-size: 0.85rem;
+	}
+
+	#score-container {
+		flex-direction: column;
+		gap: 12px;
+	}
+}
+
+/* Para móviles muy pequeños */
+@media screen and (max-width: 360px) {
+	:root {
+		--tile-size: 53px;
+		--tile-gap: 5px;
+		--tile-spacing: 58px;
+		/* 53 + 5 */
+	}
+
+	h1 {
+		font-size: 2rem;
+	}
+
+	#grid {
+		width: 240px;
+		height: 240px;
+		padding: 5px;
+	}
+
+	.tile,
+	.tile-background {
+		width: 53px;
+		height: 53px;
+		font-size: 20px;
+	}
+
+	.tile-128,
+	.tile-256,
+	.tile-512 {
+		font-size: 0.85rem;
+	}
+
+	.tile-1024,
+	.tile-2048 {
+		font-size: 0.75rem;
+	}
+}

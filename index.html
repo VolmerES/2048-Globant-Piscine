@@ -1,43 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2048 Game</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+	<title>2048 Game</title>
 
-  <!-- Tailwind CDN: framework CSS para maquetar rápido -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Tu CSS propio, para los colores de las fichas y detalles -->
-  <link rel="stylesheet" href="styles.css" />
+	<!-- Tailwind CDN: framework CSS para maquetar rápido -->
+	<script src="https://cdn.tailwindcss.com"></script>
+	<link rel="stylesheet" href="styles.css?v=2" />
+	<link rel="stylesheet" href="phone.css?v=2" />
 </head>
 
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-  <div class="text-center">
-    <!-- Título del juego -->
-    <h1 class="text-4xl font-bold mb-6">2048</h1>
+<body class="flex items-center justify-center min-h-screen"
+	style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);">
+	<div class="text-center">
+		<!-- Título del juego -->
+		<h1 class="text-4xl font-bold mb-6 text-white">2048</h1>
 
-    <!-- Marcador + botón de reinicio -->
-    <div class="flex items-center justify-between mb-4 max-w-xs mx-auto">
-      <div class="text-xl font-semibold">
-        Score: <span id="score">0</span>
-      </div>
+		<!-- Marcador + botón de reinicio -->
+		<div id="score-container" class="flex items-center justify-between mb-4 max-w-xs mx-auto">
+			<div class="text-xl font-semibold">
+				Score: <span id="score">0</span>
+			</div>
 
-      <button id="restart-btn"
-        class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow">
-        Restart
-      </button>
-    </div>
+			<button id="restart-btn">
+				Restart
+			</button>
+		</div>
 
-    <!-- Contenedor del tablero -->
-    <div id="grid" class="grid-container"></div>
-  </div>
+		<!-- Contenedor del tablero -->
+		<div id="grid" class="grid-container"></div>
+	</div>
 
-  <!-- Lógica del juego -->
-  <script src="js/grid.js"></script>
-  <script src="js/ui.js"></script>
-  <script src="js/game.js"></script>
-  <script src="js/movement.js"></script>
-  <script src="js/main.js"></script>
+	<!-- Lógica del juego -->
+	<script src="js/grid.js?v=2"></script>
+	<script src="js/ui.js?v=2"></script>
+	<script src="js/game.js?v=2"></script>
+	<script src="js/movement.js?v=2"></script>
+	<script src="js/touch.js?v=2"></script>
+	<script src="js/main.js?v=2"></script>
 </body>
+
 </html>
