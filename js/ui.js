@@ -74,23 +74,27 @@ function renderTiles(newTilePos = null) {
         tile.style.setProperty('--ty', `${ty}px`);
         
         if (oldValue !== value) {
-          // Se fusionó - actualizar valor
-          tile.textContent = value;
-          
-          // Remover clases antiguas específicamente
-          tile.classList.remove('tile-' + oldValue);
-          tile.classList.add('tile-' + value);
+          // Se fusionó - primero mover, luego actualizar valor
           
           // NO usar !important para permitir que la animación funcione
           tile.style.transform = `translate(${tx}px, ${ty}px)`;
           
-          // Añadir animación de merge
-          tile.classList.add('tile-merged');
+          // Esperar a que termine la animación de movimiento antes de cambiar el valor
           setTimeout(() => {
-            tile.classList.remove('tile-merged');
-            // Después de la animación, volver a aplicar !important
-            tile.style.setProperty('transform', `translate(${tx}px, ${ty}px)`, 'important');
-          }, 600);
+            tile.textContent = value;
+            
+            // Remover clases antiguas específicamente
+            tile.classList.remove('tile-' + oldValue);
+            tile.classList.add('tile-' + value);
+            
+            // Añadir animación de merge
+            tile.classList.add('tile-merged');
+            setTimeout(() => {
+              tile.classList.remove('tile-merged');
+              // Después de la animación, volver a aplicar !important
+              tile.style.setProperty('transform', `translate(${tx}px, ${ty}px)`, 'important');
+            }, 400);
+          }, 200); // Esperar a que termine el movimiento (0.2s)
         } else {
           // Solo actualizar posición normalmente
           tile.style.setProperty('transform', `translate(${tx}px, ${ty}px)`, 'important');
