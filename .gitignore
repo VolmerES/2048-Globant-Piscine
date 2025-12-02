@@ -1,0 +1,65 @@
+# ============================================
+# 🔒 CREDENCIALES Y ARCHIVOS SENSIBLES
+# ============================================
+# ⚠️ NUNCA subir este archivo - contiene credenciales de base de datos
+api/config.php
+
+# Archivos de configuración con credenciales
+.env
+.env.local
+.env.*.local
+*.local.php
+
+# ============================================
+# 💾 BASE DE DATOS
+# ============================================
+# Backups de base de datos (pueden contener datos sensibles)
+*.sql.backup
+*.sql.bak
+*.dump
+
+# ============================================
+# 🖥️ SISTEMA OPERATIVO
+# ============================================
+# macOS
+.DS_Store
+._*
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# ============================================
+# 🛠️ IDEs Y EDITORES
+# ============================================
+# Visual Studio Code
+.vscode/
+
+# JetBrains (PhpStorm, WebStorm)
+.idea/
+
+# ============================================
+# 📦 DEPENDENCIAS
+# ============================================
+# Node.js
+node_modules/
+
+# PHP Composer
+vendor/
+
+# ============================================
+# 📝 LOGS Y TEMPORALES
+# ============================================
+*.log
+*.tmp
+*.temp
+logs/
+cache/
+
+# ============================================
+# 🔐 CERTIFICADOS Y CLAVES
+# ============================================
+*.pem
+*.key
+*.cert
+*.crt

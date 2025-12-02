@@ -13,6 +13,7 @@
 	<script src="https://cdn.tailwindcss.com"></script>
 	<link rel="stylesheet" href="styles.css?v=2" />
 	<link rel="stylesheet" href="phone.css?v=2" />
+	<link rel="stylesheet" href="leaderboard.css?v=1" />
 </head>
 
 <body class="flex items-center justify-center min-h-screen"
@@ -27,9 +28,14 @@
 				Score: <span id="score">0</span>
 			</div>
 
-			<button id="restart-btn">
-				Restart
-			</button>
+			<div class="flex gap-2">
+				<button id="leaderboard-btn" title="View Leaderboard">
+					🏆
+				</button>
+				<button id="restart-btn">
+					Restart
+				</button>
+			</div>
 		</div>
 
 		<!-- Contenedor del tablero -->
@@ -42,6 +48,11 @@
 	<script src="js/game.js?v=2"></script>
 	<script src="js/movement.js?v=2"></script>
 	<script src="js/touch.js?v=2"></script>
+
+	<!-- Leaderboard -->
+	<script src="js/leaderboard.js?v=1"></script>
+	<script src="js/leaderboard-ui.js?v=1"></script>
+
 	<script src="js/main.js?v=2"></script>
 </body>
 
