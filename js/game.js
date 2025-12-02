@@ -26,10 +26,10 @@ async function checkGameOver() {
 					// Mostrar leaderboard después de guardar
 					await leaderboardUI.open();
 				} else {
-					alert("¡Game Over! Final Score: " + score);
+					leaderboardUI.showGameOverOverlay(score);
 				}
 			} else {
-				alert("¡Game Over! Final Score: " + score);
+				leaderboardUI.showGameOverOverlay(score);
 			}
 		}, 200);
 	}
@@ -39,7 +39,7 @@ function checkGameState() {
 	if (!gameWon && has2048()) {
 		gameWon = true;
 		setTimeout(() => {
-			alert("¡Felicidades! Has ganado!");
+			leaderboardUI.showGameWonOverlay();
 		}, 200);
 	}
 }

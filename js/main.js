@@ -2,6 +2,10 @@ let gameOver = false;
 let gameWon = false;
 
 function initGame() {
+	// Limpiar overlays si existen
+	const overlays = document.querySelectorAll('.game-over-overlay');
+	overlays.forEach(overlay => overlay.remove());
+
 	grid = [
 		[0, 0, 0, 0],
 		[0, 0, 0, 0],

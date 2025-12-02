@@ -209,6 +209,82 @@ class LeaderboardUI {
 			});
 		});
 	}
+
+	/**
+	 * Muestra el overlay de Game Over sobre el grid
+	 */
+	showGameOverOverlay(score) {
+		const gridContainer = document.getElementById('grid');
+		if (!gridContainer) return;
+
+		const overlayHTML = `
+			<div id="game-over-overlay" class="game-over-overlay">
+				<div class="game-over-title">GAME OVER</div>
+				<div class="game-over-score-label">Your Score:</div>
+				<div class="game-over-score-value">${score.toLocaleString()}</div>
+				
+				<div class="game-over-buttons">
+					<button id="game-over-retry" class="retry-button">Retry</button>
+				</div>
+			</div>
+		`;
+
+		// Asegurarse de que el contenedor tenga posición relativa para que el absoluto funcione
+		if (getComputedStyle(gridContainer).position === 'static') {
+			gridContainer.style.position = 'relative';
+		}
+
+		gridContainer.insertAdjacentHTML('beforeend', overlayHTML);
+
+		const overlay = document.getElementById('game-over-overlay');
+		const retryBtn = document.getElementById('game-over-retry');
+
+		retryBtn.addEventListener('click', () => {
+			overlay.remove();
+			initGame();
+		});
+	}
+
+	/**
+	 * Muestra el overlay de Game Won (Victoria)
+	 */
+	showGameWonOverlay() {
+		const gridContainer = document.getElementById('grid');
+		if (!gridContainer) return;
+
+		const overlayHTML = `
+			<div id="game-won-overlay" class="game-over-overlay" style="background: rgba(10, 14, 39, 0.9);">
+				<div class="game-over-title" style="color: var(--neon-green); text-shadow: 0 0 20px var(--neon-green);">YOU WON!</div>
+				<div class="game-over-score-label">2048 Tile Reached!</div>
+				
+				<div class="game-over-buttons">
+					<button id="game-won-keep-playing" class="retry-button" style="background: linear-gradient(45deg, #00f0ff, #0066ff); box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);">Keep Playing</button>
+					<button id="game-won-restart" class="skip-btn">Restart</button>
+				</div>
+			</div>
+		`;
+
+		// Asegurarse de que el contenedor tenga posición relativa
+		if (getComputedStyle(gridContainer).position === 'static') {
+			gridContainer.style.position = 'relative';
+		}
+
+		gridContainer.insertAdjacentHTML('beforeend', overlayHTML);
+
+		const overlay = document.getElementById('game-won-overlay');
+		const keepPlayingBtn = document.getElementById('game-won-keep-playing');
+		const restartBtn = document.getElementById('game-won-restart');
+
+		keepPlayingBtn.addEventListener('click', () => {
+			overlay.remove();
+			// No hacemos nada más, el juego continúa
+		});
+
+		restartBtn.addEventListener('click', () => {
+			overlay.remove();
+			initGame();
+		});
+	}
 }
 
 // Crear instancia global de la UI

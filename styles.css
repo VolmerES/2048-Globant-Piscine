@@ -1,6 +1,27 @@
-/* -------------------------------------------------------- */
-/*  ESTILO BASE DE TODAS LAS FICHAS (tiles)                 */
-/* -------------------------------------------------------- */
+:root {
+	/* Colores base cyberpunk */
+	--cyber-bg: #0a0e27;
+	--cyber-grid: #1a1f3a;
+
+	/* Colores neón */
+	--neon-cyan: #00f0ff;
+	--neon-pink: #ff006e;
+	--neon-purple: #8b00ff;
+	--neon-blue: #0066ff;
+	--neon-green: #39ff14;
+	--neon-orange: #ff9500;
+
+	/* Sombras de brillo */
+	--glow-cyan: 0 0 10px #00f0ff, 0 0 20px #00f0ff, 0 0 30px #00f0ff;
+	--glow-pink: 0 0 10px #ff006e, 0 0 20px #ff006e, 0 0 30px #ff006e;
+	--glow-purple: 0 0 10px #8b00ff, 0 0 20px #8b00ff, 0 0 30px #8b00ff;
+
+	/* Espaciado de tiles (responsive) */
+	--tile-size: 85px;
+	--tile-gap: 10px;
+	--tile-spacing: 95px;
+	/* tile-size + tile-gap */
+}
 
 body {
 	font-family: 'Orbitron', sans-serif;
@@ -43,30 +64,6 @@ h1 {
 	}
 }
 
-:root {
-	/* Colores base cyberpunk */
-	--cyber-bg: #0a0e27;
-	--cyber-grid: #1a1f3a;
-
-	/* Colores neón */
-	--neon-cyan: #00f0ff;
-	--neon-pink: #ff006e;
-	--neon-purple: #8b00ff;
-	--neon-blue: #0066ff;
-	--neon-green: #39ff14;
-	--neon-orange: #ff9500;
-
-	/* Sombras de brillo */
-	--glow-cyan: 0 0 10px #00f0ff, 0 0 20px #00f0ff, 0 0 30px #00f0ff;
-	--glow-pink: 0 0 10px #ff006e, 0 0 20px #ff006e, 0 0 30px #ff006e;
-	--glow-purple: 0 0 10px #8b00ff, 0 0 20px #8b00ff, 0 0 30px #8b00ff;
-
-	/* Espaciado de tiles (responsive) */
-	--tile-size: 85px;
-	--tile-gap: 10px;
-	--tile-spacing: 95px;
-	/* tile-size + tile-gap */
-}
 
 #grid {
 	position: relative;
@@ -108,15 +105,6 @@ h1 {
 	--tx: 0px;
 	--ty: 0px;
 }
-
-/* -------------------------------------------------------- */
-/*  COLORES SEGÚN EL VALOR DE LA FICHA                      */
-/*  Estos colores imitan al 2048 original                    */
-/* -------------------------------------------------------- */
-
-/* -------------------------------------------------------- */
-/*  COLORES NEÓN CYBERPUNK PARA LAS FICHAS                 */
-/* -------------------------------------------------------- */
 
 .tile-0 {
 	background-color: rgba(26, 31, 58, 0.6);
