@@ -43,6 +43,33 @@ if (leaderboardButton) {
 	});
 }
 
+// Botón de instrucciones
+const infoButton = document.getElementById("info-btn");
+const instructionsModal = document.getElementById("instructions-modal");
+const closeInstructionsBtn = document.getElementById("close-instructions");
+
+if (infoButton && instructionsModal) {
+	infoButton.addEventListener("click", function () {
+		instructionsModal.classList.add("active");
+		document.body.style.overflow = 'hidden';
+	});
+
+	if (closeInstructionsBtn) {
+		closeInstructionsBtn.addEventListener("click", function () {
+			instructionsModal.classList.remove("active");
+			document.body.style.overflow = '';
+		});
+	}
+
+	// Cerrar al hacer click fuera
+	instructionsModal.addEventListener("click", function (e) {
+		if (e.target === instructionsModal) {
+			instructionsModal.classList.remove("active");
+			document.body.style.overflow = '';
+		}
+	});
+}
+
 // Re-renderizar cuando cambia el tamaño de la ventana (para responsive)
 let resizeTimeout;
 window.addEventListener('resize', function () {

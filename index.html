@@ -29,6 +29,15 @@
 			</div>
 
 			<div class="flex gap-2">
+				<button id="info-btn" title="How to Play" class="flex items-center justify-center">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+						stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+						class="w-6 h-6">
+						<circle cx="12" cy="12" r="10"></circle>
+						<line x1="12" y1="16" x2="12" y2="12"></line>
+						<line x1="12" y1="8" x2="12.01" y2="8"></line>
+					</svg>
+				</button>
 				<button id="leaderboard-btn" title="View Leaderboard" class="flex items-center justify-center">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
 						stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -49,6 +58,51 @@
 
 		<!-- Contenedor del tablero -->
 		<div id="grid" class="grid-container"></div>
+	</div>
+
+	<!-- Instructions Modal -->
+	<div id="instructions-modal" class="leaderboard-modal">
+		<div class="leaderboard-content" style="max-width: 500px;">
+			<div class="leaderboard-header">
+				<h2 class="leaderboard-title">HOW TO PLAY</h2>
+				<button class="leaderboard-close" id="close-instructions">&times;</button>
+			</div>
+
+			<div class="leaderboard-body">
+				<div class="instructions-text"
+					style="color: white; font-family: 'Orbitron', sans-serif; line-height: 1.6;">
+					<p class="mb-4"><strong style="color: var(--neon-cyan);">Use your arrow keys</strong> to move the
+						tiles. When two tiles with the same number touch, they <strong
+							style="color: var(--neon-pink);">merge into one!</strong></p>
+
+					<div class="flex justify-center gap-4 my-6">
+						<div class="flex flex-col items-center">
+							<div class="tile-demo"
+								style="width: 60px; height: 60px; background: #1a1f3a; border: 1px solid var(--neon-cyan); color: var(--neon-cyan); display: flex; align-items: center; justify-content: center; font-weight: bold; border-radius: 5px; margin-bottom: 5px;">
+								2</div>
+							<span>+</span>
+							<div class="tile-demo"
+								style="width: 60px; height: 60px; background: #1a1f3a; border: 1px solid var(--neon-cyan); color: var(--neon-cyan); display: flex; align-items: center; justify-content: center; font-weight: bold; border-radius: 5px; margin-top: 5px;">
+								2</div>
+						</div>
+						<div class="flex items-center text-2xl font-bold text-white">=</div>
+						<div class="flex items-center">
+							<div class="tile-demo"
+								style="width: 60px; height: 60px; background: #1a1f3a; border: 1px solid var(--neon-blue); color: var(--neon-blue); display: flex; align-items: center; justify-content: center; font-weight: bold; border-radius: 5px;">
+								4</div>
+						</div>
+					</div>
+
+					<p class="mb-4">Join the numbers and get to the <strong style="color: var(--neon-green);">2048
+							tile!</strong></p>
+
+					<p class="text-sm opacity-80">
+						<strong>Mobile:</strong> Swipe to move.<br>
+						<strong>Desktop:</strong> Use Arrow keys or WASD.
+					</p>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<!-- Lógica del juego -->

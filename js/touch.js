@@ -22,6 +22,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// Detectar cuando el usuario toca la pantalla
 	gridElement.addEventListener('touchstart', function (event) {
+		// Permitir clicks en botones (como el de Retry en el overlay)
+		if (event.target.tagName === 'BUTTON' || event.target.closest('button')) {
+			return;
+		}
+
 		// Prevenir el scroll mientras se juega
 		event.preventDefault();
 
@@ -31,6 +36,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// Detectar cuando el usuario suelta el dedo
 	gridElement.addEventListener('touchend', function (event) {
+		// Permitir clicks en botones
+		if (event.target.tagName === 'BUTTON' || event.target.closest('button')) {
+			return;
+		}
+
 		// Prevenir el scroll mientras se juega
 		event.preventDefault();
 

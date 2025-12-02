@@ -386,7 +386,8 @@ h1 {
 /*  BOTÓN DE LEADERBOARD                                   */
 /* -------------------------------------------------------- */
 
-#leaderboard-btn {
+#leaderboard-btn,
+#info-btn {
 	background: linear-gradient(135deg, #1a1f3a 0%, #2a2f4a 100%);
 	color: var(--neon-cyan);
 	border: 2px solid var(--neon-cyan);
@@ -407,7 +408,8 @@ h1 {
 	justify-content: center;
 }
 
-#leaderboard-btn:hover {
+#leaderboard-btn:hover,
+#info-btn:hover {
 	background: linear-gradient(135deg, #2a2f4a 0%, #3a3f5a 100%);
 	box-shadow:
 		0 0 30px rgba(0, 240, 255, 0.8),
@@ -419,14 +421,16 @@ h1 {
 	border-color: var(--neon-pink);
 }
 
-#leaderboard-btn:active {
+#leaderboard-btn:active,
+#info-btn:active {
 	transform: translateY(0) scale(1);
 	box-shadow:
 		0 0 15px rgba(0, 240, 255, 0.6),
 		inset 0 0 15px rgba(0, 240, 255, 0.3);
 }
 
-#leaderboard-btn::before {
+#leaderboard-btn::before,
+#info-btn::before {
 	content: '';
 	position: absolute;
 	top: 50%;
@@ -439,7 +443,8 @@ h1 {
 	transition: width 0.6s, height 0.6s;
 }
 
-#leaderboard-btn:hover::before {
+#leaderboard-btn:hover::before,
+#info-btn:hover::before {
 	width: 300px;
 	height: 300px;
 }
