@@ -1,6 +1,7 @@
 <?php
 // API para obtener el top 10 del leaderboard
-require_once 'config.php';
+header('Content-Type: application/json; charset=utf-8');
+require_once __DIR__ . '/../config/config.php';
 
 // Manejar preflight OPTIONS request
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
@@ -49,4 +50,3 @@ try {
         'error' => 'Error al obtener el leaderboard'
     ]);
 }
-?>

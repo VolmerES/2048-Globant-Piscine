@@ -1,6 +1,7 @@
 <?php
 // API para guardar una nueva puntuación en el leaderboard
-require_once 'config.php';
+header('Content-Type: application/json; charset=utf-8');
+require_once __DIR__ . '/../config/config.php';
 
 // Manejar preflight OPTIONS request
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
@@ -88,4 +89,3 @@ try {
         'error' => 'Error al guardar la puntuación'
     ]);
 }
-?>

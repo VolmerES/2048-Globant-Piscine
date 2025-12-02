@@ -14,6 +14,11 @@ function initGame() {
 	gameWon = false;
 	initTileGrid();
 	updateScore();
+
+	// IMPORTANTE: Renderizar primero para crear las celdas de fondo
+	renderTiles();
+
+	// Luego añadir las fichas iniciales
 	addRandomTile();
 	addRandomTile();
 	renderTiles();

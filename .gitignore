@@ -2,7 +2,7 @@
 # 🔒 CREDENCIALES Y ARCHIVOS SENSIBLES
 # ============================================
 # ⚠️ NUNCA subir este archivo - contiene credenciales de base de datos
-api/config.php
+config/config.php
 
 # Archivos de configuración con credenciales
 .env
