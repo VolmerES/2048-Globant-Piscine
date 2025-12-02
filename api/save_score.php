@@ -59,18 +59,21 @@ try {
     // Obtener el ID insertado
     $insertedId = $conn->lastInsertId();
     
-    // Verificar si está en el top 10
-    $rankStmt = $conn->prepare("
-        SELECT COUNT(*) + 1 as rank 
-        FROM leaderboard 
-        WHERE score > :score 
-        OR (score = :score AND id < :id)
-    ");
-    $rankStmt->bindParam(':score', $score, PDO::PARAM_INT);
-    $rankStmt->bindParam(':id', $insertedId, PDO::PARAM_INT);
-    $rankStmt->execute();
-    $rankResult = $rankStmt->fetch();
-    $rank = $rankResult['rank'];
+    $rank = 0;
+    $isTop10 = false;
+
+    try {
+        // Verificar si está en el top 10 (Consulta simplificada)
+        $rankStmt = $conn->prepare("SELECT COUNT(*) + 1 as rank FROM leaderboard WHERE score > :score");
+        $rankStmt->bindParam(':score', $score, PDO::PARAM_INT);
+        $rankStmt->execute();
+        $rankResult = $rankStmt->fetch();
+        $rank = $rankResult['rank'];
+        $isTop10 = $rank <= 10;
+    } catch (Exception $e) {
+        // Si falla el cálculo del ranking, no importa, el score ya se guardó.
+        // Loguear el error si fuera necesario pero no detener la ejecución.
+    }
     
     echo json_encode([
         'success' => true,
@@ -78,7 +81,7 @@ try {
         'data' => [
             'id' => $insertedId,
             'rank' => $rank,
-            'is_top_10' => $rank <= 10
+            'is_top_10' => $isTop10
         ]
     ]);
     

@@ -1,8 +1,10 @@
 -- Base de datos para el Leaderboard del juego 2048
 
+DROP TABLE IF EXISTS leaderboard;
+
 CREATE TABLE IF NOT EXISTS leaderboard (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    player_name VARCHAR(50) NOT NULL,
+    player_name VARCHAR(50) NOT NULL UNIQUE,
     score INT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     INDEX idx_score (score DESC),
