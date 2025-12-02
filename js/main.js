@@ -26,6 +26,14 @@ if (restartButton) {
 	});
 }
 
+// Botón de leaderboard
+const leaderboardButton = document.getElementById("leaderboard-btn");
+if (leaderboardButton) {
+	leaderboardButton.addEventListener("click", function () {
+		leaderboardUI.open();
+	});
+}
+
 // Re-renderizar cuando cambia el tamaño de la ventana (para responsive)
 let resizeTimeout;
 window.addEventListener('resize', function () {
