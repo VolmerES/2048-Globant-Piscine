@@ -83,9 +83,17 @@ try {
     ]);
     
 } catch(PDOException $e) {
-    http_response_code(500);
-    echo json_encode([
-        'success' => false,
-        'error' => 'Error al guardar la puntuación'
-    ]);
+    if ($e->getCode() == 23000) { // Código de error para duplicados
+        http_response_code(409); // Conflict
+        echo json_encode([
+            'success' => false,
+            'error' => 'Este nombre ya está en uso. Por favor elige otro.'
+        ]);
+    } else {
+        http_response_code(500);
+        echo json_encode([
+            'success' => false,
+            'error' => 'Error al guardar la puntuación'
+        ]);
+    }
 }

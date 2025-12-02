@@ -10,6 +10,8 @@ function has2048() {
 }
 
 async function checkGameOver() {
+	if (gameOver) return;
+
 	if (!canMove()) {
 		gameOver = true;
 		setTimeout(async () => {

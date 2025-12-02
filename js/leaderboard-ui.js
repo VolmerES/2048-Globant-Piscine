@@ -191,7 +191,8 @@ class LeaderboardUI {
 					modal.remove();
 					resolve(true);
 				} catch (error) {
-					errorDiv.textContent = 'Error saving score. Please try again.';
+					// Mostrar el mensaje de error específico si viene del servidor
+					errorDiv.textContent = error.message || 'Error saving score. Please try again.';
 					saveBtn.disabled = false;
 					saveBtn.textContent = 'Save Score';
 				}
