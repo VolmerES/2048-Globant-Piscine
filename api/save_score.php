@@ -1,7 +1,7 @@
 <?php
 // API para guardar una nueva puntuación en el leaderboard
 header('Content-Type: application/json; charset=utf-8');
-require_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/../../config/config.php';
 
 // Manejar preflight OPTIONS request
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
@@ -37,9 +37,9 @@ try {
         exit();
     }
     
-    if (strlen($playerName) > 50) {
+    if (strlen($playerName) > 20) {
         http_response_code(400);
-        echo json_encode(['success' => false, 'error' => 'El nombre es demasiado largo (máx 50 caracteres)']);
+        echo json_encode(['success' => false, 'error' => 'El nombre es demasiado largo (máx 20 caracteres)']);
         exit();
     }
     
