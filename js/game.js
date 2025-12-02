@@ -25,12 +25,10 @@ async function checkGameOver() {
 				if (saved) {
 					// Mostrar leaderboard después de guardar
 					await leaderboardUI.open();
-				} else {
-					leaderboardUI.showGameOverOverlay(score);
 				}
-			} else {
-				leaderboardUI.showGameOverOverlay(score);
 			}
+
+			leaderboardUI.showGameOverOverlay(score);
 		}, 200);
 	}
 }
