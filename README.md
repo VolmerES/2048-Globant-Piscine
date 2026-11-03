@@ -38,3 +38,7 @@ La imagen es un Nginx que sirve los ficheros estáticos, así que **la clasifica
 local**: necesita PHP y MySQL. En el servidor, la API carga la conexión desde
 `config/config.php`, dos niveles por encima de `api/` y fuera del repo, que define
 `getDBConnection()`. La tabla se crea con `database.sql`.
+
+## Licencia
+
+Código bajo licencia [MIT](LICENSE). © 2025-2026 Juan Bautista Delorme Pinedo.
